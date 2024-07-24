@@ -3,31 +3,23 @@ local on_init = require("nvchad.configs.lspconfig").on_init
 local capabilities = require("nvchad.configs.lspconfig").capabilities
 
 local lspconfig = require "lspconfig"
+local mason_lspconfig = require("mason-lspconfig")
 local util = require "lspconfig/util"
-local servers = { "tsserver", "tailwindcss", "eslint", "html", "cssls" }
+local servers = { "svelte", "tsserver", "tailwindcss", "eslint", "html", "cssls" }
 
 -- lsps with default config
 for _, lsp in ipairs(servers) do
+  mason_lspconfig.setup_handlers({
   lspconfig[lsp].setup {
     on_attach = on_attach,
     on_init = on_init,
     capabilities = capabilities,
   }
+  })
 end
 
 -- rust
-lspconfig.rust_analyzer.setup({
-  on_attach = on_attach,
-  capabilities = capabilities,
-  filetypes = {"rust"},
-  root_dir = util.root_pattern("Cargo.toml"),
-  settings = {
-    ['rust_analyzer'] = {
-      cargo = { allFeatures = true },
-    },
-  },
-})
-
+mason_lspconfig.setup_handlers({
 lspconfig.svelte.setup({
   capabilities = capabilities,
   on_attach = function(client, _)
@@ -39,5 +31,16 @@ lspconfig.svelte.setup({
         end,
     })
   end,
+}),
+lspconfig.rust_analyzer.setup({
+  on_attach = on_attach,
+  capabilities = capabilities,
+  filetypes = {"rust"},
+  root_dir = util.root_pattern("Cargo.toml"),
+  settings = {
+    ['rust_analyzer'] = {
+      cargo = { allFeatures = true },
+    },
+  },
 })
-
+})

@@ -8,22 +8,31 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    dependencies = {
-     "williamboman/mason-lspconfig.nvim",
-      opts = {
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+      setup = {
       ensure_installed = {
-        "lua-language-server",
-        "stylua",
-        "html-lsp",
-        "css-lsp",
-        "prettier",
+        "lua_ls",
+        "stylelint_lsp",
+        "html",
+        "cssls",
         "svelte",
         "graphql",
-        "rust-analyzer",
-        "eslint-lsp",
-        "tailwindcss-language-server",
-        "typescript-language-server",
-        },
+        "rust_analyzer",
+        "eslint",
+        "tailwindcss",
+        "tsserver",
+      },
+    },
+  },
+  {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+      setup = {
+      ensure_installed = {
+        "prettier",
+        "stylua",
+        "eslint_d",
       },
     },
   },
