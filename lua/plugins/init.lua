@@ -8,7 +8,9 @@ return {
   },
   {
     "williamboman/mason.nvim",
-    opts = {
+    dependencies = {
+     "williamboman/mason-lspconfig.nvim",
+      opts = {
       ensure_installed = {
         "lua-language-server",
         "stylua",
@@ -21,9 +23,9 @@ return {
         "eslint-lsp",
         "tailwindcss-language-server",
         "typescript-language-server",
+        },
       },
     },
-
   },
   {
     "windwp/nvim-ts-autotag",
