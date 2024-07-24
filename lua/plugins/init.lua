@@ -15,6 +15,8 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
+        "svelte",
+        "graphql",
         "rust-analyzer",
         "eslint-lsp",
         "tailwindcss-language-server",
