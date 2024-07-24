@@ -21,6 +21,7 @@ return {
         "graphql",
         "rust_analyzer",
         "eslint",
+        "emmet_ls",
         "tailwindcss",
         "tsserver",
       },
