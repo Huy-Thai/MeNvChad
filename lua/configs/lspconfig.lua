@@ -44,7 +44,7 @@ lspconfig.rust_analyzer.setup({
   },
 }),
 lspconfig.emmet_ls.setup({
-  on_attach = on_attach,      
+  on_attach = on_attach,
   capabilities = capabilities,
     filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less", "svelte" },
   })

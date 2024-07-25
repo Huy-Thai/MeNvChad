@@ -1,7 +1,25 @@
 return {
   {
+    "kdheepak/lazygit.nvim",
+    cmd = {
+      "LazyGit",
+      "LazyGitConfig",
+      "LazyGitCurrentFile",
+      "LazyGitFilter",
+      "LazyGitFilterCurrentFile",
+    },
+    -- optional for floating window border decoration
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "nvim-lua/plenary.nvim",
+    },
+    config = function()
+      require("telescope").load_extension "lazygit"
+    end,
+  },
+  {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
+    event = "BufWritePre",
     config = function()
       require "configs.conform"
     end,
@@ -11,7 +29,7 @@ return {
   },
   {
     "williamboman/mason-lspconfig.nvim",
-      setup = {
+    setup = {
       ensure_installed = {
         "lua_ls",
         "stylelint_lsp",
@@ -29,7 +47,7 @@ return {
   },
   {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
-      setup = {
+    setup = {
       ensure_installed = {
         "prettier",
         "stylua",
@@ -39,7 +57,7 @@ return {
   },
   {
     "windwp/nvim-ts-autotag",
-    ft = {"javascript", "javascriptreact", "typescript", "typescriptreact"},
+    ft = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
     config = function()
       require("nvim-ts-autotag").setup()
     end,
@@ -53,31 +71,32 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-     config = function()
-       require("nvchad.configs.lspconfig").defaults()
-       require "configs.lspconfig"
-     end,
+    config = function()
+      require("nvchad.configs.lspconfig").defaults()
+      require "configs.lspconfig"
+    end,
   },
   {
-   	"nvim-treesitter/nvim-treesitter",
+    "nvim-treesitter/nvim-treesitter",
     opts = {
-    ensure_installed = {
-   		"vim",
-      "lua",
-      "vimdoc",
-      "html",
-      "css",
-      "rust",
-      "javascript",
-      "typescript",
-      "tsx",
-   	}},
+      ensure_installed = {
+        "vim",
+        "lua",
+        "vimdoc",
+        "html",
+        "css",
+        "rust",
+        "javascript",
+        "typescript",
+        "tsx",
+      },
+    },
   },
   {
     "rust-lang/rust.vim",
     ft = "rust",
-    init = function ()
+    init = function()
       vim.g.rustfmt_autosave = 1
-    end
-  }
+    end,
+  },
 }
