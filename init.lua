@@ -10,6 +10,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+vim.opt.guifont = { "JetBrainsMono Nerd Font", "h12" }
 
 vim.api.nvim_create_autocmd("QuitPre", {
   callback = function()
