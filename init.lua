@@ -11,6 +11,7 @@ end
 
 vim.opt.rtp:prepend(lazypath)
 vim.o.guifont = "JetBrainsMono Nerd Font"
+vim.cmd "autocmd BufRead,BufNewFile *.hbs set filetype=html"
 
 vim.api.nvim_create_autocmd("QuitPre", {
   callback = function()
